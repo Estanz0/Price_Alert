@@ -1,16 +1,20 @@
-# This is a sample Python script.
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#in the string/Quotation marks enter the path to where you downloaded the chromedriver.
+browser = webdriver.Chrome("chromedriver")
 
+#navigates you to the facebook page.
+browser.get('https://www.facebook.com/')
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+#find the username field and enter the email example@yahoo.com.
+username = browser.find_elements_by_css_selector("input[name=email]")
+username[0].send_keys('example@yahoo.com')
 
+#find the password field and enter the password password.
+password = browser.find_elements_by_css_selector("input[name=pass]")
+password[0].send_keys('password')
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('Christian')
-
-print('hi')
+#find the login button and click it.
+loginButton = browser.find_elements_by_css_selector("input[type=submit]")
+loginButton[0].click()
